@@ -1,0 +1,12 @@
+{
+  "name": "twinkle/twinkle-api",
+  "description": "Just for fun",
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "twinkle\\client\\": "client/",
+      "twinkle\\service\\": "service/"
+    }
+  }
+}
