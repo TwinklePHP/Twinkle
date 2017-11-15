@@ -13,6 +13,10 @@ abstract class BaseRpcClient extends BaseClient
 {
     public function __call($name, $args = [])
     {
-        return call_user_func_array([$this->_client,$name],$args);
+        try {
+            return call_user_func_array([$this->_client, $name], $args);
+        } catch (\Exception $e) {
+            print_r($e);
+        }
     }
 }

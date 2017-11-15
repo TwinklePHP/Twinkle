@@ -27,6 +27,6 @@ class Client
 
     public function __call($name, $args = [])
     {
-        return call_user_func_array([$this->_driver,$name],$args);
+        return call_user_func_array([$this->_driver, $name], $args);
     }
 }

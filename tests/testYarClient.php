@@ -8,6 +8,11 @@
 
 require '../vendor/autoload.php';
 
+/*
 $client = new \twinkle\client\Client('Yar',"http://192.168.139.128:8888/testYarService.php");
 print_r($client->test('hello world'));
 print_r($client->test());
+*/
+
+$client = new twinkle\client\Client('Yar','http://192.168.139.128:8080/rpc/');
+print_r( $client->actionTest(['a'=>'b']));
