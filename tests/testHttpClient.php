@@ -8,6 +8,6 @@
 
 require '../vendor/autoload.php';
 
-$client = new \twinkle\client\Client('Http',"http://192.168.139.128:8888/testHttpService.php");
-print_r($client->test(['a'=>'hello world']));
+$client = new \twinkle\client\Client('Http',"http://127.0.0.1:8899/testHttpService.php");
+print_r($client->test('hello world'));
 //print_r($client->test());

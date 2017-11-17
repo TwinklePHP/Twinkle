@@ -22,7 +22,7 @@ class TestYarController
      */
     public function test($argv = 'default')
     {
-        return $argv;
+        return ['argv'=>$argv];
     }
 }
 

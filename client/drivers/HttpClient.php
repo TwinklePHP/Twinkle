@@ -13,6 +13,8 @@ class HttpClient extends BaseClient
 {
     function init($serviceUrl)
     {
+        $this->_url = $serviceUrl;
+
         $this->_client = curl_init();
         curl_setopt($this->_client, CURLOPT_URL, $serviceUrl);
         curl_setopt($this->_client, CURLOPT_RETURNTRANSFER, true);
@@ -34,15 +36,15 @@ class HttpClient extends BaseClient
      */
     public function __call($name, $args = [])
     {
+        if ($this->_client == null) {
+            $this->init($this->_url);
+        }
         $args['method'] = $name;
         curl_setopt($this->_client, CURLOPT_POSTFIELDS, json_encode($args));
-        //加载头文件
-        if (!empty ($headers)) {
-            curl_setopt($this->_client, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
-        }
-        $backData ['data'] = curl_exec($this->_client);var_dump($backData ['data']);
+        curl_setopt($this->_client, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
+        $backData ['data'] = curl_exec($this->_client);
         $backData ['httpcode'] = curl_getinfo($this->_client, CURLINFO_HTTP_CODE);
         curl_close($this->_client);
-        return json_decode($backData['data'],true);
+        return json_decode($backData['data'], true);
     }
 }
