@@ -8,7 +8,12 @@
 
 namespace twinkle\service;
 
-
+/**
+ * Class Api
+ * @package twinkle\service
+ *
+ * @method array parseRequest($method,$params = [])
+ */
 class Api
 {
     private $_instance;

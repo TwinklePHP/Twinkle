@@ -9,7 +9,7 @@
 
 require '../vendor/autoload.php';
 
-class TestHttpController extends \yii\rest\Controller
+class TestHttpController
 {
     public function __construct($params = [])
     {
@@ -23,6 +23,12 @@ class TestHttpController extends \yii\rest\Controller
      */
     public function test($argv = 'default')
     {
-        return $argv;
+        return ['argv'=>$argv];
     }
 }
+
+$body = file_get_contents('php://input');
+$_POST = json_decode($body,true);
+$method = $_POST['method'];
+unset($_POST['method']);
+exit(json_encode(call_user_func_array([new TestHttpController(),$method],$_POST)));

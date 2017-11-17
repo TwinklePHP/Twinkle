@@ -14,6 +14,8 @@ abstract class BaseClient
 
     protected $_client = null;
 
+    protected $_url;
+
     public function __construct($serviceUrl = '')
     {
         $this->init($serviceUrl);
