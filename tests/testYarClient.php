@@ -14,5 +14,5 @@ print_r($client->test('hello world'));
 print_r($client->test());
 */
 
-$client = new twinkle\client\Client('Yar','http://192.168.139.128:8080/rpc/');
-print_r( $client->actionTest(['a'=>'b']));
+$client = new twinkle\client\Client('Yar','http://www.twinklephp.com/rpc/user');
+print_r( $client->regiter(['a'=>'b']));
